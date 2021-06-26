@@ -85,7 +85,8 @@ public class MainFragment extends PreferenceFragmentCompat implements OnSharedPr
         setHasOptionsMenu(true);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        setPreferencesFromResource(R.xml.preferences, rootKey);
+        setPreferencesFromResource(R.xml.preference2, rootKey);
+
         initPreferences();
 
         findPreference(KEY_DEVICE).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -94,14 +95,16 @@ public class MainFragment extends PreferenceFragmentCompat implements OnSharedPr
                 return newValue != null && !newValue.equals("");
             }
         });
-        findPreference(KEY_URL).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+    /*    findPreference(KEY_URL).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
+                System.out.println(newValue);
+
                 return (newValue != null) && validateServerURL(newValue.toString());
             }
-        });
+        });*/
 
-        findPreference(KEY_INTERVAL).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+/*        findPreference(KEY_INTERVAL).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (newValue != null) {
@@ -114,7 +117,7 @@ public class MainFragment extends PreferenceFragmentCompat implements OnSharedPr
                 }
                 return false;
             }
-        });
+        });*/
 
         Preference.OnPreferenceChangeListener numberValidationListener = new Preference.OnPreferenceChangeListener() {
             @Override
@@ -130,16 +133,16 @@ public class MainFragment extends PreferenceFragmentCompat implements OnSharedPr
                 return false;
             }
         };
-        findPreference(KEY_DISTANCE).setOnPreferenceChangeListener(numberValidationListener);
-        findPreference(KEY_ANGLE).setOnPreferenceChangeListener(numberValidationListener);
+//        findPreference(KEY_DISTANCE).setOnPreferenceChangeListener(numberValidationListener);
+//        findPreference(KEY_ANGLE).setOnPreferenceChangeListener(numberValidationListener);
 
         alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
         alarmIntent = PendingIntent.getBroadcast(getActivity(), 0, new Intent(getActivity(), AutostartReceiver.class), 0);
 
-        if (sharedPreferences.getBoolean(KEY_STATUS, false)) {
+        /*if (sharedPreferences.getBoolean(KEY_STATUS, false)) {
             startTrackingService(true, false);
         }
-
+*/
     }
 
     public static class NumericEditTextPreferenceDialogFragment extends EditTextPreferenceDialogFragmentCompat {
@@ -202,13 +205,13 @@ public class MainFragment extends PreferenceFragmentCompat implements OnSharedPr
 
     private void setPreferencesEnabled(boolean enabled) {
         findPreference(KEY_DEVICE).setEnabled(enabled);
-        findPreference(KEY_URL).setEnabled(enabled);
-        findPreference(KEY_INTERVAL).setEnabled(enabled);
-        findPreference(KEY_DISTANCE).setEnabled(enabled);
-        findPreference(KEY_ANGLE).setEnabled(enabled);
-        findPreference(KEY_ACCURACY).setEnabled(enabled);
-        findPreference(KEY_BUFFER).setEnabled(enabled);
-        findPreference(KEY_WAKELOCK).setEnabled(enabled);
+//        findPreference(KEY_URL).setEnabled(enabled);
+//        findPreference(KEY_INTERVAL).setEnabled(enabled);
+//        findPreference(KEY_DISTANCE).setEnabled(enabled);
+//        findPreference(KEY_ANGLE).setEnabled(enabled);
+     //   findPreference(KEY_ACCURACY).setEnabled(enabled);
+//        findPreference(KEY_BUFFER).setEnabled(enabled);
+//        findPreference(KEY_WAKELOCK).setEnabled(enabled);
     }
 
     @Override

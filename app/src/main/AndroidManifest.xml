@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="org.traccar.client">
 
@@ -17,13 +16,16 @@
     <uses-feature android:name="android.hardware.location.gps" />
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme"
-        android:name=".MainApplication"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login"></activity>
 
         <meta-data
             android:name="google_analytics_adid_collection_enabled"
@@ -38,15 +40,16 @@
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity-alias>
 
-        <activity android:name=".StatusActivity"/>
-
+        <activity android:name=".StatusActivity" />
         <activity
             android:name=".ShortcutActivity"
             android:label="@string/menu_shortcuts">
@@ -59,9 +62,7 @@
         <service
             android:name=".TrackingService"
             android:foregroundServiceType="location" />
-
-        <service
-            android:name=".TrackingService$HideNotificationService" />
+        <service android:name=".TrackingService$HideNotificationService" />
 
         <receiver android:name=".AutostartReceiver">
             <intent-filter>
@@ -71,7 +72,6 @@
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

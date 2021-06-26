@@ -40,16 +40,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-     setContentView(R.layout.activity_login);
+     setContentView(R.layout.main);
         //final EditText username = (EditText) findViewById(R.id.username);
        // final EditText password = (EditText) findViewById(R.id.password);
       //  final ImageView logo = (ImageView) findViewById(R.id.logo);
        // logo.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.side_slide));
         String [] usernames={"one","two","three","four"};
-        final Button login = (Button) findViewById(R.id.loginButton);
-        login.setEnabled(true);
+      //  final Button login = (Button) findViewById(R.id.loginButton);
+//        login.setEnabled(true);
 
-        login.setOnClickListener(v -> setContentView(R.layout.main));
+     //   login.setOnClickListener(v -> setContentView(R.layout.main));
 
 
 
